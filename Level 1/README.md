@@ -1,4 +1,4 @@
-# MCP-Llama-parse
+# MCP-Llama-parse - Level 1
 
 This project is a FastAPI-based server for Model Context Protocol (MCP) command handling, with example client and test scripts.
 
@@ -22,8 +22,8 @@ This project is a FastAPI-based server for Model Context Protocol (MCP) command 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/MCP-Llama-parse.git
-cd MCP-Llama-parse
+git clone https://github.com/atharvabhakane/MCP-Llama-parse.git
+cd MCP-Llama-parse/Level 1
 ```
 
 2. Install dependencies:
@@ -54,10 +54,11 @@ python client.py
 
 ```
 MCP-Llama-parse/
-├── main.py              # FastAPI application entry point
-├── client.py           # Example client implementation
-├── requirements.txt    # Project dependencies
-└── README.md          # Project documentation
+└── Level 1/
+    ├── main.py              # FastAPI application entry point
+    ├── client.py           # Example client implementation
+    ├── requirements.txt    # Project dependencies
+    └── README.md          # Project documentation
 ```
 
 ## System Architecture
