@@ -58,7 +58,12 @@ MCP-Llama-parse/
     ├── main.py              # FastAPI application entry point
     ├── client.py           # Example client implementation
     ├── requirements.txt    # Project dependencies
-    └── README.md          # Project documentation
+    ├── README.md          # Project documentation
+    ├── __pycache__/       # Python bytecode cache
+    ├── .pytest_cache/     # Pytest cache directory
+    ├── .vscode/          # VS Code configuration
+    ├── node_modules/     # Node.js dependencies
+    └── .venv/            # Python virtual environment
 ```
 
 ## System Architecture
