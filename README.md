@@ -49,23 +49,33 @@ python client.py
 ## Flowchart
 
 ```
-+-------------------+         +-------------------+         +-------------------+
-|                   |         |                   |         |                   |
-|   User (CLI)      +-------> |   client.py       +-------> |   main.py (API)   |
-|                   | Input   |                   |  POST   |                   |
-+-------------------+         +-------------------+         +-------------------+
-        |                            |                              |
-        | 1. Enter document &        |                              |
-        |    entities                |                              |
-        |--------------------------->|                              |
-        |                            | 2. Send request to /mcp      |
-        |                            |----------------------------->|
-        |                            |                              | 3. Extract entities
-        |                            |                              |    using regex
-        |                            |                              |
-        |                            | 4. Receive response <--------|
-        | 5. Display results <-------|                              |
-        |                            |                              |
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│    User     │     │   Client    │     │   Server    │
+│  (CLI App)  │     │  (client.py)│     │ (main.py)   │
+└──────┬──────┘     └──────┬──────┘     └──────┬──────┘
+       │                   │                   │
+       │ 1. Enter         │                   │
+       │    Document      │                   │
+       │    & Entities    │                   │
+       │─────────────────>│                   │
+       │                   │                   │
+       │                   │ 2. POST Request   │
+       │                   │    to /mcp        │
+       │                   │──────────────────>│
+       │                   │                   │
+       │                   │                   │ 3. Process
+       │                   │                   │    Document
+       │                   │                   │
+       │                   │                   │ 4. Extract
+       │                   │                   │    Entities
+       │                   │                   │
+       │                   │ 5. JSON Response  │
+       │                   │<──────────────────│
+       │                   │                   │
+       │ 6. Display        │                   │
+       │    Results        │                   │
+       │<─────────────────│                   │
+       │                   │                   │
 ```
 
 ---
