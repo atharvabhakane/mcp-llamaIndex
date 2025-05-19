@@ -18,8 +18,8 @@ Before you begin, make sure you have:
 
 1. Clone this repository:
 ```bash
-git clone <your-repository-url>
-cd <repository-name>
+git clone https://github.com/atharvabhakane/MCP-Llama-parse.git
+cd MCP-Llama-parse
 ```
 
 2. Install the required packages:
@@ -113,7 +113,8 @@ Enter entities to extract (comma-separated):
 .
 ├── main.py      # FastAPI server code
 ├── client.py    # Command-line client
-└── README.md    # This documentation
+├── README.md    # This documentation
+└── FEEDBACK.md  # Detailed system feedback
 ```
 
 ## ⚠️ Important Notes
@@ -134,18 +135,6 @@ If you encounter any issues:
 2. Check that you're using Python 3.7 or higher
 3. Verify all required packages are installed
 4. Ensure your document text is properly formatted
-
-## 🤝 Contributing
-
-Feel free to contribute to this project by:
-1. Forking the repository
-2. Creating a new branch
-3. Making your changes
-4. Submitting a pull request
-
-## 📄 License
-
-This project is open source and available under the MIT License.
 
 ## 📚 Code Documentation
 
@@ -220,4 +209,16 @@ The client implementation includes:
 3. **Feature Additions**
    - Support for batch processing
    - Additional entity types
-   - Custom extraction rules 
+   - Custom extraction rules
+
+## 🤝 Contributing
+
+Feel free to contribute to this project by:
+1. Forking the repository
+2. Creating a new branch
+3. Making your changes
+4. Submitting a pull request
+
+## 📄 License
+
+This project is open source and available under the MIT License. 
