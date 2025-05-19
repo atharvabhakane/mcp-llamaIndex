@@ -24,8 +24,11 @@ wheels/
 .installed.cfg
 *.egg
 
+# Node.js
+node_modules/
+
 # IDE specific files
 .idea/
 .vscode/
 *.swp
-*.swo 
+*.swo
