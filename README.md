@@ -145,4 +145,79 @@ Feel free to contribute to this project by:
 
 ## 📄 License
 
-This project is open source and available under the MIT License. 
+This project is open source and available under the MIT License.
+
+## 📚 Code Documentation
+
+### Server-Side Documentation (main.py)
+The server implementation follows FastAPI best practices with:
+- Clear endpoint definitions with proper type hints
+- Comprehensive docstrings for all functions
+- Input validation using Pydantic models
+- Error handling with appropriate HTTP status codes
+- Logging for debugging and monitoring
+
+### Client-Side Documentation (client.py)
+The client implementation includes:
+- Well-documented functions with clear purpose statements
+- Input validation and error handling
+- User-friendly command-line interface
+- Clear feedback messages for users
+
+## 🔍 MCP Architecture Feedback
+
+### Model Layer
+- **Strengths**:
+  - Clean separation of data structures
+  - Well-defined entity models
+  - Efficient data processing algorithms
+- **Areas for Improvement**:
+  - Could implement caching for frequently accessed data
+  - Consider adding data validation at model level
+
+### Controller Layer
+- **Strengths**:
+  - Clear request handling
+  - Proper separation of concerns
+  - Efficient routing
+- **Areas for Improvement**:
+  - Add more comprehensive error handling
+  - Implement request rate limiting
+  - Add request validation middleware
+
+### Presenter Layer
+- **Strengths**:
+  - Clean response formatting
+  - Consistent output structure
+  - User-friendly error messages
+- **Areas for Improvement**:
+  - Add more detailed response metadata
+  - Implement response compression
+  - Add support for different output formats
+
+### Overall Architecture
+- **Strengths**:
+  - Clear separation of concerns
+  - Scalable design
+  - Easy to maintain and extend
+- **Areas for Improvement**:
+  - Add more comprehensive logging
+  - Implement better error tracking
+  - Consider adding monitoring endpoints
+
+## 🔄 Future Improvements
+
+1. **Performance Optimization**
+   - Implement caching mechanisms
+   - Add request batching
+   - Optimize data processing algorithms
+
+2. **Security Enhancements**
+   - Add authentication
+   - Implement rate limiting
+   - Add input sanitization
+
+3. **Feature Additions**
+   - Support for batch processing
+   - Additional entity types
+   - Custom extraction rules 
