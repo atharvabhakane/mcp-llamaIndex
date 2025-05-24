@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "simulated_idp": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\Samarth\\OneDrive\\Desktop\\level-3\\simulated_idp.py"
+      ]
+    }
+  }
+} 
