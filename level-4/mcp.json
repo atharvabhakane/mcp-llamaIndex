@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "llamaparse-dynamic": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\Samarth\\OneDrive\\Desktop\\level-4\\server.py"
+      ]
+    }
+  }
+} 
