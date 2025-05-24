@@ -173,14 +173,6 @@ The server uses `mcp.run(transport="stdio")` for MCP integration.
 
 ---
 
-## 🚀 What's Next (Level 2)
-
-* Add HTTP API calls (e.g. weather API)
-* Handle secrets (API keys)
-* Implement structured JSON outputs
-
----
-
 ## 💡 Tip
 
 Want to simulate this with Claude or Cursor? Use prompts like:
