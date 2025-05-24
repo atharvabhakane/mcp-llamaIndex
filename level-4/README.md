@@ -64,28 +64,6 @@ Tests the server connection and checks for API key presence.
 
 ## System Architecture and Process Flow
 
-### High-Level Flow
-```mermaid
-graph TD
-    A[Start Entity Extraction] --> B{PDF Path and Entities Provided?}
-    B -- Yes --> C{PDF File Exists?}
-    B -- No --> Z[Return Error: Missing Input]
-    C -- Yes --> D{LLAMA_API_KEY Configured?}
-    C -- No --> Y[Return Error: File Not Found]
-    D -- No --> X[Return Error: API Key Not Configured]
-    D -- Yes --> E[Attempt API Extraction]
-    E --> F{API Call Successful (Status 200)?}
-    E --> G[API Call Failed or Error]
-    F -- Yes --> H[Return API Response]
-    F -- No --> G
-    G --> I[Use Fallback Parsing (LlamaParse)]
-    I --> J{PDF Text Extracted?}
-    J -- Yes --> K{Text Content Empty?}
-    J -- No --> W[Return Error: No Text Extracted]
-    K -- Yes --> V[Return Error: PDF Empty]
-    K -- No --> L[Extract Simple Entities from Text]
-    L --> M[Save Debug Safe Text (Optional)]
-    L --> N[Return Fallback Results]
 ```
 
 ### Detailed Process Flow (extract_entities tool)
