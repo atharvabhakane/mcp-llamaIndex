@@ -1,0 +1,4 @@
+fastmcp
+llama_parse
+python-dotenv
+requests 

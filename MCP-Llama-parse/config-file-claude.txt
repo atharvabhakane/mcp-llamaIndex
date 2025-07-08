@@ -1,0 +1,68 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\Samarth\\OneDrive\\Desktop",
+        "C:\\Users\\Samarth\\Downloads"
+      ]
+    },
+    "calculator_level-1": {
+      "command": "C:\\Users\\Samarth\\.local\\bin\\uv.EXE",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "C:\\Users\\Samarth\\OneDrive\\Desktop\\MCP-Llama-parse\\level-1\\add-sub-hello.py"
+      ]
+    },
+    "weather_level-2": {
+      "command": "C:\\Users\\Samarth\\.local\\bin\\uv.EXE",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "C:\\Users\\Samarth\\OneDrive\\Desktop\\MCP-Llama-parse\\level-2\\weather_server.py"
+      ]
+    },
+    "simulated_idp_level-3": {
+      "command": "C:\\Users\\Samarth\\.local\\bin\\uv.EXE",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "C:\\Users\\Samarth\\OneDrive\\Desktop\\MCP-Llama-parse\\level-3\\simulated_idp.py"
+      ]
+    },
+    "llamaparse_level-4": {
+      "command": "C:\\Users\\Samarth\\.local\\bin\\uv.EXE",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "C:\\Users\\Samarth\\OneDrive\\Desktop\\MCP-Llama-parse\\level-4\\server-sdk.py"
+      ]
+    },
+    "llamaparse_level-5": {
+      "command": "C:\\Users\\Samarth\\.local\\bin\\uv.EXE",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "C:\\Users\\Samarth\\OneDrive\\Desktop\\MCP-Llama-parse\\level-5\\server.py"
+      ]
+    }
+  }
+}
