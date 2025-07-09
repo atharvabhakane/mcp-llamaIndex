@@ -291,19 +291,19 @@ Example response:
 ### 1. Reading the PDF File
 
 ![Read PDF](../Images/Screenshot%202025-07-09%20200004.png)
-* This shows the process of reading a PDF file for extraction.*
+* This shows the process of reading a PDF file for extraction.
 
 ### 2. Listing Allowed Directories
 
 ![Allowed Directories](../Images/Screenshot%202025-07-09%20200041.png)
-* This displays the allowed directories (Desktop and Downloads) where your PDF files must be located for access.*
+* This displays the allowed directories (Desktop and Downloads) where your PDF files must be located for access.
 
 ### 3. Calling the Extract Entities Tool
 
 ![Extract Entities Tool](../Images/Screenshot%202025-07-09%20201025.png)
-* This demonstrates how to call the extract_entities_2 tool, specifying the PDF path and the entities to extract.*
+* This demonstrates how to call the extract_entities_2 tool, specifying the PDF path and the entities to extract.
 
 ### 4. Output Example
 
 ![Extraction Output](../Images/Screenshot%202025-07-09%20201056.png)
-* This shows the output of the extraction process, including the extracted entities and their values.* 
+* This shows the output of the extraction process, including the extracted entities and their values.
