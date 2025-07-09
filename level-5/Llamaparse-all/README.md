@@ -260,25 +260,25 @@ Removed the second tool and integrated debugging/logging into the main extractio
 
 ### 1. Reading File
 
-![Service Items Output](../level-5/Images/Screenshot%202025-07-09%20190319.png)
+![Service Items Output](../../Images/Screenshot%202025-07-09%20190319.png)
 * Example output: Extracted service items and their details from the PDF.
 
 ### 2. Checking allowed directories
 
-![Allowed directories](../level-5/Images/image.png)
+![Allowed directories](../../Images/image.png)
 * This shows the allowed directories for file access: Desktop and Downloads. Make sure your files are in these folders to avoid access errors. 
 
 ### 3. Searching for PDF Files
 
-![Search Files](../level-5/Images/Screenshot%202025-07-09%20190336.png)
+![Search Files](../../Images/Screenshot%202025-07-09%20190336.png)
 * You can search for your PDF files in the allowed directories to ensure they are accessible for processing.
 
 ### 4. Calling the Extraction Tool
 
-![Create Agent and Extract](../level-5/Images/Screenshot%202025-07-09%20190355.png)
+![Create Agent and Extract](../../Images/Screenshot%202025-07-09%20190355.png)
 * Example of a request to the extraction tool, specifying entities, the PDF path, and the agent name.
 
 ### 5. Output
 
-![Additional Extraction Step](../level-5/Images/Screenshot%202025-07-09%20190411.png)
+![Additional Extraction Step](../../Images/Screenshot%202025-07-09%20190411.png)
 * Output in the extraction process.
