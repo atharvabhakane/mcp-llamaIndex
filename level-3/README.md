@@ -93,6 +93,20 @@ Example output:
 }
 ```
 
+---
+
+## 🖼️ Visual Example: Entity Extraction
+
+### Input Example
+
+![Entity Extraction Input](../Images/Screenshot%202025-07-09%20203433.png)
+* This shows the input invoice and the entity extraction request, specifying the entities to extract (Invoice No, Date, Status).* 
+
+### Output Example
+
+![Entity Extraction Output](../Images/Screenshot%202025-07-09%20203424.png)
+* This shows the extracted output for the requested entities: invoice number, date, and status.*
+
 ## 📁 Project Structure
 
 ```
