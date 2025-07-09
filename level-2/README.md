@@ -64,8 +64,10 @@ async def get_weather(location: str) -> dict:
 
 This asynchronous function is exposed as a FastMCP tool. It takes a `location` (city or region name) as input and returns a dictionary containing the current weather information (location name, country, temperature in Celsius, and condition text). It handles API key validation and potential HTTP or other exceptions.
 
-## Detailed Feedback
+---
 
-[Add any specific feedback or notes about the project here. For example, potential improvements, known issues, or design considerations.]
+## 🖼️ Visual Example: Using the Weather Tool
 
-[Provide feedback here...] 
+![Weather Tool Example](../Images/Screenshot%202025-07-09%20202727.png)
+*This shows the use of the get_weather tool to fetch and display the current weather for Mumbai, including the request sent to the tool and the response received.*
+ 
