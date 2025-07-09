@@ -132,14 +132,14 @@ npx @modelcontextprotocol/inspector
 ## 🖼️ Visual Example: Using the MCP Calculator Tool
 
 ![MCP Calculator Example](../Images/Screenshot%202025-07-09%20201953.png)
-* This shows the use of the MCP calculator tool to compute 3+4, including the request sent to the tool and the response received (3 + 4 = 7).* 
+* This shows the use of the MCP calculator tool to compute 3+4, including the request sent to the tool and the response received (3 + 4 = 7).
 
 #### Subtract Tool Example
 
 ![MCP Subtract Example](../Images/Screenshot%202025-07-09%20202324.png)
-* This shows the use of the MCP subtract tool to compute 10-7, including the request and the response (10 - 7 = 3).* 
+* This shows the use of the MCP subtract tool to compute 10-7, including the request and the response (10 - 7 = 3).
 
 #### Hello Tool Example
 
 ![MCP Hello Example](../Images/Screenshot%202025-07-09%20202419.png)
-* This shows the use of the MCP hello tool, which returns a greeting message in response to the input.*
+* This shows the use of the MCP hello tool, which returns a greeting message in response to the input.
