@@ -103,6 +103,13 @@ def extract_from_base64(base64_string, entities):
 # print(json.dumps(result_base64, indent=2))
 ```
 
+---
+
+## 🖼️ Visual Example: Using Base64 PDF Input
+
+![Extract Entities with Base64](../Images/Screenshot%202025-07-09%20204635.png)
+* This shows the use of the extract_entities tool with a base64-encoded PDF (instead of a file path). This demonstrates that you can use either a PDF path or a base64 string as input for extraction.*
+
 ## System Architecture and Process Flow
 
 ### High-Level Flow
