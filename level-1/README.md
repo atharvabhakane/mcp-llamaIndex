@@ -129,64 +129,17 @@ npx @modelcontextprotocol/inspector
 
 ---
 
-## 📅 Sample MCP Responses
+## 🖼️ Visual Example: Using the MCP Calculator Tool
 
-```json
-{
-  "result": 15
-}
-```
+![MCP Calculator Example](../images/Screenshot%202025-07-09%20201953.png)
+*This shows the use of the MCP calculator tool to compute 3+4, including the request sent to the tool and the response received (3 + 4 = 7).* 
 
-```json
-{
-  "response": "Hello, Alice! Welcome to the MCP calculator!"
-}
-```
+#### Subtract Tool Example
 
----
+![MCP Subtract Example](../images/Screenshot%202025-07-09%20202324.png)
+*This shows the use of the MCP subtract tool to compute 10-7, including the request and the response (10 - 7 = 3).* 
 
-## 📄 Code With Documentation
+#### Hello Tool Example
 
-Each function is:
-
-* Annotated with docstrings
-* Uses proper type hints
-* Fully exposed as a tool using `@mcp.tool()`
-
-The server uses `mcp.run(transport="stdio")` for MCP integration.
-
----
-
-## 🔍 Feedback on Level 1 Project
-
-### Pros:
-
-* Easy to understand
-* Tools are simple and testable
-* Useful starter for understanding MCP integration
-
-### Improvement Suggestions:
-
-* Support multiple input values (e.g. `add(1,2,3,4)`)  
-* Add error handling and input validation
-* Add unit tests
-
----
-
-## 💡 Tip
-
-Want to simulate this with Claude or Cursor? Use prompts like:
-
-> "What is the result of subtracting 7 from 20?"
-
-It will call your MCP tool under the hood!
-
----
-
-## 📁 License
-
-MIT License
-
----
-
-Happy Coding! 🚀
+![MCP Hello Example](../images/Screenshot%202025-07-09%20202419.png)
+*This shows the use of the MCP hello tool, which returns a greeting message in response to the input.*
