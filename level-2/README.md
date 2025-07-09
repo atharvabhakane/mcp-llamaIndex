@@ -69,5 +69,5 @@ This asynchronous function is exposed as a FastMCP tool. It takes a `location` (
 ## 🖼️ Visual Example: Using the Weather Tool
 
 ![Weather Tool Example](../Images/Screenshot%202025-07-09%20202727.png)
- *This shows the use of the get_weather tool to fetch and display the current weather for Mumbai, including the request sent to the tool and the response received.*
+ * This shows the use of the get_weather tool to fetch and display the current weather for Mumbai, including the request sent to the tool and the response received.*
  
