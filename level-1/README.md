@@ -131,7 +131,7 @@ npx @modelcontextprotocol/inspector
 
 ## 🖼️ Visual Example: Using the MCP Calculator Tool
 
-![MCP Calculator Example](../images/Screenshot%202025-07-09%20201953.png)
+![MCP Calculator Example] (https://github.com/atharvabhakane/MCP-Llama-parse/blob/main/Images/Screenshot%202025-07-09%20201953.png)
 *This shows the use of the MCP calculator tool to compute 3+4, including the request sent to the tool and the response received (3 + 4 = 7).* 
 
 #### Subtract Tool Example
