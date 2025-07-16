@@ -18,15 +18,11 @@ level-3/
 
 ## 🚀 How to Run This (Step-by-Step)
 
-1. **Install requirements:**
-   ```bash
-   pip install mcp
-   ```
-2. **Start the server:**
+1. **Start the server:**
    ```bash
    python simulated_idp.py
    ```
-3. **Test it!**
+2. **Test it!**
    - When the script is running, provide input as JSON:
      ```json
      {"document": "Invoice No: INV-12345 Customer: John Doe Date: 2024-06-01 Total: $100.00", "entities": ["invoice_number", "customer", "date", "total"]}
@@ -107,11 +103,13 @@ This project taught me that real-world documents are messy! I ran into spacing a
 ### Input Example
 
 ![Entity Extraction Input](../Images/Screenshot%202025-07-09%20203433.png)
+
 *This shows the input invoice and the entity extraction request, specifying the entities to extract (Invoice No, Date, Status).* 
 
 ### Output Example
 
 ![Entity Extraction Output](../Images/Screenshot%202025-07-09%20203424.png)
+
 *This shows the extracted output for the requested entities: invoice number, date, and status.*
 
 ---
@@ -124,14 +122,3 @@ This project taught me that real-world documents are messy! I ran into spacing a
 - Supported entities are determined by the logic within the `extract` function (currently includes basic patterns for entities followed by ':' or '-').
 
 ---
-
-## 🙌 Ready to Learn or Contribute?
-
-If you’ve made it this far—thank you! I built this project to help others learn, experiment, and build real solutions. Whether you’re a total beginner or an experienced developer, your questions and contributions are always welcome.
-
-**Next Steps:**
-- Try running the entity extraction tool and see what you can build.
-- If you get stuck, open an issue or reach out—I'm happy to help!
-- Want to add a new feature or fix a bug? Fork the repo and send a pull request.
-
-Let’s make document processing easier, together!
