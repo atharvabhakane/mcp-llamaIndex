@@ -1,5 +1,0 @@
-llama-cloud-services
-python-dotenv
-fastapi
-uvicorn
-mcp
