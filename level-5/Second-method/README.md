@@ -1,4 +1,4 @@
-# Level 5 - MCP LlamaParse Server
+# Second-method - MCP LlamaParse Server
 
 ## 🏆 Why I Built This
 
@@ -9,7 +9,7 @@ After experimenting with text and basic entity extraction, I wanted a solution t
 ## 🗂️ Project Structure
 
 ```
-level-5/
+second-method/
 ├── server.py           # MCP server using LlamaParse SDK
 ├── requirements.txt    # Python dependencies
 ├── README.md           # Documentation
