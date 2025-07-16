@@ -18,21 +18,17 @@ level-2/
 
 ## 🚀 How to Run This (Step-by-Step)
 
-1. **Install dependencies:**
-   ```bash
-   pip install python-dotenv httpx fastmcp
-   ```
-2. **Get a WeatherAPI key:**
-   - Sign up at https://www.weatherapi.com/ and grab your free API key.
-3. **Set up your .env file:**
+1. **Get a WeatherAPI key:**
+   - Sign up at [WeatherAPI.com](https://www.weatherapi.com/) and grab your free API key.
+2. **Set up your .env file:**
    ```env
-   WEATHER_API_KEY=YOUR_API_KEY
+   [WEATHER_API_KEY](https://www.weatherapi.com/)=YOUR_API_KEY
    ```
-4. **Start the server:**
+3. **Start the server:**
    ```bash
    python weather_server.py
    ```
-5. **Test it!**
+4. **Test it!**
    - Send a request like:
      ```json
      { "tool": "get_weather", "args": { "location": "London" } }
@@ -93,17 +89,7 @@ This step taught me how to make my tools actually useful—by connecting them to
 ## 🖼️ Visual Example: Using the Weather Tool
 
 ![Weather Tool Example](../Images/Screenshot%202025-07-09%20202727.png)
+
 *This shows the use of the get_weather tool to fetch and display the current weather for Mumbai, including the request sent to the tool and the response received.*
 
----
-
-## 🙌 Ready to Learn or Contribute?
-
-If you’ve made it this far—thank you! I built this project to help others learn, experiment, and build real solutions. Whether you’re a total beginner or an experienced developer, your questions and contributions are always welcome.
-
-**Next Steps:**
-- Try running the weather tool and see what you can build.
-- If you get stuck, open an issue or reach out—I'm happy to help!
-- Want to add a new feature or fix a bug? Fork the repo and send a pull request.
-
-Let’s make document processing easier, together! 
+--- 
