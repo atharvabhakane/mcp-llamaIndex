@@ -19,20 +19,16 @@ level-4/
 
 ## 🚀 How to Run This (Step-by-Step)
 
-1. **Clone the repository and install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. **Set up your API key:**
-   - Create a `.env` file in the project root with your Llama Cloud API key:
+1. **Set up your API key:**
+   - Create a `.env` file in the project root with your [Llama Cloud API key](https://cloud.llamaindex.ai/project/6d759a43-6134-4e3e-844f-2f4a6cd400a6):
      ```env
      LLAMA_CLOUD_API_KEY=your_api_key_here
      ```
-3. **Start the server:**
+2. **Start the server:**
    ```bash
    python server-sdk.py
    ```
-4. **Test it!**
+3. **Test it!**
    - Use a tool like `curl` or any HTTP client to send a request (see below for an example).
 
 ---
@@ -103,6 +99,7 @@ def extract_from_file(file_path, entities):
 ## 🖼️ Visual Example: Using Base64 PDF Input
 
 ![Extract Entities with Base64](../Images/Screenshot%202025-07-09%20204635.png)
+
 *This shows the use of the extract_entities tool with a base64-encoded PDF (instead of a file path). This demonstrates that you can use either a PDF path or a base64 string as input for extraction.*
 
 ## System Architecture and Process Flow
@@ -150,13 +147,18 @@ sequenceDiagram
 
 ## Feedback on Project MCP (Micro Code Plugin)
 
-## 🙌 Ready to Learn or Contribute?
+The project demonstrates a clear understanding of the MCP concept by exposing specific functionality as a tool. The use of `fastmcp` simplifies the server implementation.
 
-If you’ve made it this far—thank you! I built this project to help others learn, experiment, and build real solutions. Whether you’re a total beginner or an experienced developer, your questions and contributions are always welcome.
+**Areas for Improvement and Consideration:**
 
-**Next Steps:**
-- Try running the entity extraction tool and see what you can build.
-- If you get stuck, open an issue or reach out—I'm happy to help!
-- Want to add a new feature or fix a bug? Fork the repo and send a pull request.
+*   **Error Handling Granularity:** While basic error handling is present (e.g., missing inputs, file not found), providing more specific error types or codes could be beneficial for clients consuming the tool. This allows clients to handle different failure scenarios more effectively.
+*   **API Key Management:** Storing the API key in a `.env` file is standard for development, but for production deployments, consider more secure methods like environment variables or a dedicated secret management system.
+*   **Asynchronous Operations:** The `extract_entities` tool is defined as `async`, which is appropriate for I/O-bound operations like API calls and potentially file reading. Ensure that any future additions or modifications maintain this asynchronous pattern where necessary to prevent blocking the server.
+*   **Logging:** Implementing a standard logging system (`logging` module) with appropriate handlers and formatters would provide more structured and configurable logging, especially for production environments.
+*   **Dependencies:** Explicitly listing dependencies and their versions in `requirements.txt` is good. Consider using a dependency management tool like Poetry or Pipenv for better management and reproducible builds.
+*   **Code Structure:** For larger projects, consider organizing the code into smaller modules or packages based on functionality (e.g., an `api` module) to improve maintainability and readability. *Note: Docstrings have been added to functions and classes, improving readability.*
+*   **Testing:** Adding unit tests for utility functions and integration tests for the tool (`extract_entities`) would significantly improve code reliability and facilitate future refactoring.
+*   **Documentation:** Docstrings have been added to functions and classes explaining their purpose, arguments, and return values, significantly improving code readability and aiding in automated documentation generation.
 
-Let’s make document processing easier, together! 
+Overall, the project provides a solid foundation for a PDF entity extraction MCP. Addressing the areas for improvement will make it more robust, maintainable, and production-ready. 
+
