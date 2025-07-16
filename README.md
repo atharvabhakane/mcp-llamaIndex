@@ -399,14 +399,6 @@ pip install -r Llamaparse-all/requirements.txt
 - Reuses or creates a LlamaParse agent for extraction.
 - Returns extracted data in a structured format.
 
-### 🏗️ Project Structure
-```
-Llamaparse-all/
-├── server.py          # Main server and extraction logic
-├── requirements.txt   # Python dependencies
-├── README.md          # Detailed usage and design notes
-```
-
 ### 🚀 Example Usage
 **Python:**
 ```python
@@ -431,7 +423,6 @@ curl -X POST http://localhost:8000/tools/create_agent_and_extract \
   }'
 ```
 
-**See `Llamaparse-all/README.md` for full details, advanced usage, and troubleshooting.**
 
 ---
 
