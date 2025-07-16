@@ -1,10 +1,16 @@
 # 📄 MCP Project: Multi-Level Document Processing System
 
-Welcome! I'm excited to share my journey building the **MCP (Model Context Protocol) Project**—a hands-on, multi-level exploration of document processing using FastMCP and LlamaParse. My goal with this project was to demystify intelligent document processing, break it down into approachable steps, and make it easy for anyone (including total beginners) to learn, experiment, and contribute.
+Welcome! I'm excited to share my journey building the **MCP (Model Context Protocol) Project**—a hands-on, multi-level exploration of document processing using FastMCP and **LlamaParse**. My goal with this project was to demystify intelligent document processing, break it down into approachable steps, and make it easy for anyone (including total beginners) to learn, experiment, and contribute.
 
 ---
 
-## 🚀 Why I Built This Project (and What You'll Learn)
+## 🦙 What is LlamaParse?
+
+**LlamaParse** is a powerful document parsing tool that extracts structured data and text from PDFs and other documents. It preserves formatting, supports multiple output types (like plain text and markdown), and is especially useful for building AI-powered document workflows. I chose LlamaParse for its reliability, flexibility, and ease of integration with Python projects.
+
+---
+
+## 🚀 Why I Built This Project (And What You'll Learn)
 
 When I first started working with document processing, I found most tutorials either too simple or overwhelmingly complex. I wanted a resource that would guide me (and others) from the basics to advanced techniques, showing not just the "how" but also the "why" behind each improvement.
 
@@ -25,15 +31,12 @@ I wanted to start with something super simple—a calculator! This level is all 
 A tiny server that can add or subtract numbers (and greet you!). It's not fancy, but it's a great way to see how MCP tools work end-to-end.
 
 ### How to Run It (Step-by-Step)
-1. **Install FastMCP:**
-   ```bash
-   pip install fastmcp
-   ```
-2. **Start the server:**
+
+1. **Start the server:**
    ```bash
    python level-1/server.py
    ```
-3. **Test it!** You can use MCP Inspector, Cursor, or even send a JSON payload directly. For example:
+2. **Test it!** You can use MCP Inspector, Cursor, or even send a JSON payload directly. For example:
    ```json
    { "tool": "add", "args": { "a": 5, "b": 3 } }
    ```
@@ -87,21 +90,18 @@ After getting the calculator working, I wanted to try something a bit more real-
 A tool that fetches the current weather for any city you ask for. It's a great way to learn about API integration and error handling.
 
 ### How to Run It (Step-by-Step)
-1. **Install dependencies:**
-   ```bash
-   pip install python-dotenv httpx fastmcp
-   ```
-2. **Get a WeatherAPI key:**
+
+1. **Get a WeatherAPI key:**
    - Sign up at https://www.weatherapi.com/ and grab your free API key.
-3. **Set up your .env file:**
+2. **Set up your .env file:**
    ```env
    WEATHER_API_KEY=YOUR_API_KEY
    ```
-4. **Start the server:**
+3. **Start the server:**
    ```bash
    python level-2/weather_server.py
    ```
-5. **Test it!**
+4. **Test it!**
    Send a request like:
    ```json
    { "tool": "get_weather", "args": { "location": "London" } }
@@ -177,22 +177,19 @@ flowchart TD
 
 ## 📘 Level 3: IDP Using Claude on Cursor
 
-### Why Use Claude and Cursor?
-At this point, I wanted to see how far I could push document understanding by combining my MCP server with powerful AI tools. Claude (via Cursor) is amazing at reading and reasoning over documents, so I built a tool that lets it see the full parsed text of any PDF.
+### Why Use Claude, LlamaParse, and Cursor?
+At this point, I wanted to see how far I could push document understanding by combining my MCP server with powerful AI tools. **LlamaParse** is used here to extract the full text from PDFs, making it easy for Claude (via Cursor) to process and answer questions about your documents. LlamaParse ensures the text is clean and structured for downstream AI processing.
 
 ### What You'll Build
-A tool that returns the entire text of a PDF, making it easy for Claude (or any AI) to process and answer questions about your documents.
+A tool that returns the entire text of a PDF, making it easy for Claude (or any AI) to process and answer questions about your documents. **LlamaParse** is the backbone for parsing the PDF content.
 
 ### How to Run It (Step-by-Step)
-1. **Install requirements:**
-   ```bash
-   pip install mcp llamaparse
-   ```
-2. **Start the server:**
+
+1. **Start the server:**
    ```bash
    python level-3/simulated_idp.py
    ```
-3. **Test it!**
+2. **Test it!**
    Send a request like:
    ```json
    { "tool": "get_full_text", "args": { "pdf_path": "path/to/your.pdf" } }
@@ -252,22 +249,19 @@ flowchart TD
 
 ## 📘 Level 4: SDK-based Entity Extraction with Text Parsing
 
-### Why Entity Extraction?
-After seeing the power of full-text extraction, I wanted to make my tools smarter—so I added entity extraction! This level is all about pulling out specific pieces of information (like invoice numbers or dates) from your documents.
+### Why Entity Extraction with LlamaParse?
+After seeing the power of full-text extraction, I wanted to make my tools smarter—so I added entity extraction! This level is all about pulling out specific pieces of information (like invoice numbers or dates) from your documents. **LlamaParse** is used to convert PDFs to text, which is then processed to extract entities.
 
 ### What You'll Build
-A tool that takes a PDF and a list of entities you care about, and returns just those values. It's a great way to automate data entry or build document-driven workflows.
+A tool that takes a PDF and a list of entities you care about, and returns just those values. It's a great way to automate data entry or build document-driven workflows. **LlamaParse** handles the parsing step.
 
 ### How to Run It (Step-by-Step)
-1. **Install requirements:**
-   ```bash
-   pip install mcp llamaparse
-   ```
-2. **Start the server:**
+
+1. **Start the server:**
    ```bash
    python level-4/server-sdk.py
    ```
-3. **Test it!**
+2. **Test it!**
    Send a request like:
    ```json
    { "tool": "extract_entities", "args": { "pdf_path": "path/to/your.pdf", "entities": ["Invoice Number", "Date"] } }
@@ -342,24 +336,22 @@ flowchart TD
 
 ## 📦 Level-5: Dynamic PDF Extraction Server
 
-### Why Llamaparse-all?
-After building the previous levels, I wanted a truly flexible, production-ready solution. Llamaparse-all is my answer: a dynamic PDF extraction server that lets you define what you want to extract at runtime. No more hardcoding schemas—just tell it what you need!
+### Why Level-5?
+After building the previous levels, I wanted a truly flexible, production-ready solution. LlamaParse-all is my answer: a dynamic PDF extraction server that lets you define what you want to extract at runtime. No more hardcoding schemas—just tell it what you need! **LlamaParse** is used for all document parsing and extraction, supporting both file path and base64 input.
 
 ### What You'll Build
-A server that can extract any set of entities from any PDF, using either a file path or base64 input. It manages agents for you and handles all the tricky parts behind the scenes.
+A server that can extract any set of entities from any PDF, using either a file path or base64 input. It manages agents for you and handles all the tricky parts behind the scenes, with **LlamaParse** doing the heavy lifting for parsing and extraction.
 
 ### How to Run It (Step-by-Step)
+
 1. **Set your API key:**
-   - Add your `LLAMA_CLOUD_API_KEY` to a `.env` file.
-2. **Install requirements:**
-   ```bash
-   pip install -r Llamaparse-all/requirements.txt
-   ```
-3. **Start the server:**
+   - Add your [`LLAMA_CLOUD_API_KEY`](https://llamaindex.ai/) to a `.env` file.
+
+2. **Start the server:**
    ```bash
    python Llamaparse-all/server.py
    ```
-4. **Test it!**
+3. **Test it!**
    Send a request like:
    ```json
    {
@@ -387,11 +379,6 @@ This module is the culmination of everything I learned—it's robust, flexible, 
 - fastapi
 - uvicorn
 - mcp
-
-Install with:
-```bash
-pip install -r Llamaparse-all/requirements.txt
-```
 
 ### 🚦 How It Works
 - Receives an extraction request with a list of entities, agent name, and PDF (as path or base64).
@@ -428,22 +415,19 @@ curl -X POST http://localhost:8000/tools/create_agent_and_extract \
 
 ## 📘 Second Method: Markdown Format + Robust Entity Extraction
 
-### Why Markdown and Streaming?
-After struggling with text parsing, I realized I needed a format that preserved the structure of my documents. Markdown turned out to be perfect—it keeps headings, bold text, and key-value pairs clear. Plus, switching to HTTP streaming made everything faster and more reliable.
+### Why Markdown, LlamaParse, and Streaming?
+After struggling with text parsing, I realized I needed a format that preserved the structure of my documents. **LlamaParse** turned out to be perfect—it keeps headings, bold text, and key-value pairs clear. Plus, switching to HTTP streaming made everything faster and more reliable.
 
 ### What You'll Build
-A tool that extracts entities from PDFs using markdown-formatted output, so you get accurate, well-structured results every time.
+A tool that extracts entities from PDFs using markdown-formatted output from **LlamaParse**, so you get accurate, well-structured results every time.
 
 ### How to Run It (Step-by-Step)
-1. **Install requirements:**
-   ```bash
-   pip install mcp llamaparse
-   ```
-2. **Start the server:**
+
+1. **Start the server:**
    ```bash
    python level-5/server.py
    ```
-3. **Test it!**
+2. **Test it!**
    Send a request like:
    ```json
    { "tool": "extract_entities_markdown", "args": { "pdf_path": "path/to/your.pdf", "entities": ["Invoice Number", "Total Amount"] } }
@@ -554,16 +538,9 @@ flowchart TD
 
 ---
 
-## 🙌 Ready to Learn or Contribute?
+## 📚 Resources
 
-If you've made it this far—thank you! I built this project to help others learn, experiment, and build real solutions. Whether you're a total beginner or an experienced developer, your questions and contributions are always welcome.
-
-**Next Steps:**
-- Try running one of the levels above and see what you can build.
-- If you get stuck, open an issue or reach out—I'm happy to help!
-- Want to add a new feature or fix a bug? Fork the repo and send a pull request.
-
-Let's make document processing easier, together!
+- [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)
 
 ---
 
