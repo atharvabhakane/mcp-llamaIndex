@@ -349,7 +349,7 @@ A server that can extract any set of entities from any PDF, using either a file 
 
 2. **Start the server:**
    ```bash
-   python Llamaparse-all/server.py
+   python level-5/server.py
    ```
 3. **Test it!**
    Send a request like:
@@ -425,7 +425,7 @@ A tool that extracts entities from PDFs using markdown-formatted output from **L
 
 1. **Start the server:**
    ```bash
-   python level-5/server.py
+   python second-method/server.py
    ```
 2. **Test it!**
    Send a request like:
