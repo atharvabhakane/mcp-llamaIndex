@@ -2,7 +2,16 @@
 
 ## 🏆 Why I Built This
 
-After experimenting with text and basic entity extraction, I wanted a solution that was both robust and production-ready. This project is my deep dive into using the LlamaParse SDK for advanced PDF processing, with support for markdown output, streaming, and even Gemini-powered normalization. If you want to see how to build a real-world, high-performance document extraction server, this is it!
+After experimenting with text and basic entity extraction, I wanted a solution that was both robust and production-ready. Unlike Level 4, which had just one extraction tool, this method introduces multiple tools—`extract_entities_2`, `count_pages`, and `list_available_entities`—for more flexible and advanced document extraction workflows. This project is my deep dive into using the LlamaParse SDK for advanced PDF processing, with support for markdown output, streaming, and even Gemini-powered normalization. If you want to see how to build a real-world, high-performance document extraction server, this is it!
+
+**How is this different from Level 4?**
+
+In Level 4, we had a single tool (`extract_entities`) for extracting entities from PDFs using LlamaParse. In this Second-method, we've expanded to a multi-tool approach, providing:
+- **extract_entities_2**: Extracts specified entities from a PDF (by file path or base64), with optional Gemini-powered markdown normalization.
+- **count_pages**: Returns the total number of pages in the PDF.
+- **list_available_entities**: Lists candidate entity names detected in the PDF.
+
+This multi-tool setup allows for more advanced workflows, better resource management, and greater flexibility—making it much easier to build real-world, production-grade document extraction services.
 
 ---
 
@@ -86,7 +95,6 @@ graph TD
 ## ✅ Errors Faced & Fixes in Level 5
 
 Here are a few real-world issues we hit (and how we solved them) while building the Level 5 Second-method server:
-
 
 🔴 **Claude Error:** ClaudeAiToolResultRequest.content.0.text.text: Input should be a valid string
 - **Cause:** Claude was getting an invalid or malformed input string from the LlamaParse output.
