@@ -105,7 +105,50 @@ def extract_from_file(file_path, entities):
 ![Extract Entities with Base64](../Images/Screenshot%202025-07-09%20204635.png)
 *This shows the use of the extract_entities tool with a base64-encoded PDF (instead of a file path). This demonstrates that you can use either a PDF path or a base64 string as input for extraction.*
 
----
+## System Architecture and Process Flow
+
+### High-Level Flow
+```mermaid
+graph TD
+    A["Start Entity Extraction"] --> B{"PDF Input (Path or Base64) and Entities Provided?"}
+    B -- "Yes" --> C{"LLAMA_API_KEY Configured?"}
+    B -- "No" --> Z["Return Error: Missing Input"]
+    C -- "Yes" --> D["Attempt API Extraction"]
+    C -- "No" --> X["Return Error: API Key Not Configured"]
+    D --> E{"API Call Successful?"}
+    D --> G["API Call Failed or Error"]
+    E -- "Yes" --> F["Return Extraction Results"]
+    E -- "No" --> G
+    G --> H["Return Error: Extraction Failed"]
+```
+
+### Detailed Process Flow (extract_entities tool)
+```mermaid
+sequenceDiagram
+    participant Client
+    participant MCPServer as "MCP Server"
+    participant LlamaParseAPI as "LlamaParse API"
+
+    Client->>MCPServer: Call extract_entities(pdf_path or pdf_base64, entities)
+    activate MCPServer
+    MCPServer->>MCPServer: Validate Inputs & Check API Key
+    alt Invalid Input or API Key Missing
+        MCPServer-->>Client: Return Error
+    else Inputs Valid & API Key Present
+        MCPServer->>LlamaParseAPI: Send PDF Data & Entities for Extraction
+        activate LlamaParseAPI
+        LlamaParseAPI-->>MCPServer: API Response (Success or Failure)
+        deactivate LlamaParseAPI
+        alt Extraction Successful
+            MCPServer-->>Client: Return Extraction Results
+        else Extraction Failed or Error
+            MCPServer-->>Client: Return Error: Extraction Failed
+        end
+    end
+    deactivate MCPServer
+```
+
+## Feedback on Project MCP (Micro Code Plugin)
 
 ## 🙌 Ready to Learn or Contribute?
 
