@@ -340,83 +340,7 @@ flowchart TD
 
 ---
 
-## 📘 Level 5: Markdown Format + Robust Entity Extraction
-
-### Why Markdown and Streaming?
-After struggling with text parsing, I realized I needed a format that preserved the structure of my documents. Markdown turned out to be perfect—it keeps headings, bold text, and key-value pairs clear. Plus, switching to HTTP streaming made everything faster and more reliable.
-
-### What You'll Build
-A tool that extracts entities from PDFs using markdown-formatted output, so you get accurate, well-structured results every time.
-
-### How to Run It (Step-by-Step)
-1. **Install requirements:**
-   ```bash
-   pip install mcp llamaparse
-   ```
-2. **Start the server:**
-   ```bash
-   python level-5/server.py
-   ```
-3. **Test it!**
-   Send a request like:
-   ```json
-   { "tool": "extract_entities_markdown", "args": { "pdf_path": "path/to/your.pdf", "entities": ["Invoice Number", "Total Amount"] } }
-   ```
-   You'll get back:
-   ```json
-   { "Invoice Number": "INV-12345", "Total Amount": "$100.00" }
-   ```
-
-### What You'll Learn
-- How to use markdown to preserve document structure
-- How to extract entities more reliably
-- How HTTP streaming improves tool performance
-
-### Why This Matters
-This level finally solved the spacing and misalignment headaches I had before. Now, my entity extraction is accurate and fast, and the server is ready for real-world use!
-
-### Key Tool Implementation
-
-```python
-@mcp.tool()
-async def extract_entities_markdown(pdf_path: str, entities: list[str]) -> dict:
-    """Extract entities from markdown-formatted text."""
-    text = LlamaParse().parse(pdf_path, result_type="markdown")
-    result = {}
-    for line in text.splitlines():
-        clean_line = line.replace("**", "").strip()
-        for entity in entities:
-            if entity.lower() in clean_line.lower():
-                result[entity] = clean_line
-    return result
-```
-
-**Markdown Example:**
-```
-**Invoice Number:** INV-12345
-```
-
-**Server Enhancement:**
-```python
-mcp.run(transport="streamable-http")
-```
-
-**Learning:**  
-- Markdown improved key-value accuracy and solved spacing issues.
-- HTTP streaming reduced response time and improved reliability.
-
-#### 🗺️ Error Flowchart
-
-```mermaid
-flowchart TD
-    A[Parse as markdown] --> B{Spacing issue?}
-    B -- No --> C[Accurate key-value extraction]
-    B -- Yes --> D[Improve markdown cleaning logic]
-```
-
----
-
-## 📦 Llamaparse-all: Dynamic PDF Extraction Server
+## 📦 Level-5: Dynamic PDF Extraction Server
 
 ### Why Llamaparse-all?
 After building the previous levels, I wanted a truly flexible, production-ready solution. Llamaparse-all is my answer: a dynamic PDF extraction server that lets you define what you want to extract at runtime. No more hardcoding schemas—just tell it what you need!
@@ -508,6 +432,82 @@ curl -X POST http://localhost:8000/tools/create_agent_and_extract \
 ```
 
 **See `Llamaparse-all/README.md` for full details, advanced usage, and troubleshooting.**
+
+---
+
+## 📘 Second Method: Markdown Format + Robust Entity Extraction
+
+### Why Markdown and Streaming?
+After struggling with text parsing, I realized I needed a format that preserved the structure of my documents. Markdown turned out to be perfect—it keeps headings, bold text, and key-value pairs clear. Plus, switching to HTTP streaming made everything faster and more reliable.
+
+### What You'll Build
+A tool that extracts entities from PDFs using markdown-formatted output, so you get accurate, well-structured results every time.
+
+### How to Run It (Step-by-Step)
+1. **Install requirements:**
+   ```bash
+   pip install mcp llamaparse
+   ```
+2. **Start the server:**
+   ```bash
+   python level-5/server.py
+   ```
+3. **Test it!**
+   Send a request like:
+   ```json
+   { "tool": "extract_entities_markdown", "args": { "pdf_path": "path/to/your.pdf", "entities": ["Invoice Number", "Total Amount"] } }
+   ```
+   You'll get back:
+   ```json
+   { "Invoice Number": "INV-12345", "Total Amount": "$100.00" }
+   ```
+
+### What You'll Learn
+- How to use markdown to preserve document structure
+- How to extract entities more reliably
+- How HTTP streaming improves tool performance
+
+### Why This Matters
+This level finally solved the spacing and misalignment headaches I had before. Now, my entity extraction is accurate and fast, and the server is ready for real-world use!
+
+### Key Tool Implementation
+
+```python
+@mcp.tool()
+async def extract_entities_markdown(pdf_path: str, entities: list[str]) -> dict:
+    """Extract entities from markdown-formatted text."""
+    text = LlamaParse().parse(pdf_path, result_type="markdown")
+    result = {}
+    for line in text.splitlines():
+        clean_line = line.replace("**", "").strip()
+        for entity in entities:
+            if entity.lower() in clean_line.lower():
+                result[entity] = clean_line
+    return result
+```
+
+**Markdown Example:**
+```
+**Invoice Number:** INV-12345
+```
+
+**Server Enhancement:**
+```python
+mcp.run(transport="streamable-http")
+```
+
+**Learning:**  
+- Markdown improved key-value accuracy and solved spacing issues.
+- HTTP streaming reduced response time and improved reliability.
+
+#### 🗺️ Error Flowchart
+
+```mermaid
+flowchart TD
+    A[Parse as markdown] --> B{Spacing issue?}
+    B -- No --> C[Accurate key-value extraction]
+    B -- Yes --> D[Improve markdown cleaning logic]
+```
 
 ---
 
