@@ -9,7 +9,7 @@ After building the previous levels, I wanted a truly flexible, production-ready 
 ## 🗂️ Project Structure
 
 ```
-Llamaparse-all/
+Level-5/
 ├── server.py          # Main server and extraction logic
 ├── requirements.txt   # Python dependencies
 ├── README.md          # Documentation
@@ -20,16 +20,12 @@ Llamaparse-all/
 ## 🚀 How to Run This (Step-by-Step)
 
 1. **Set your API key:**
-   - Add your `LLAMA_CLOUD_API_KEY` to a `.env` file.
-2. **Install requirements:**
-   ```bash
-   pip install -r Llamaparse-all/requirements.txt
-   ```
-3. **Start the server:**
+   - Add your [`LLAMA_CLOUD_API_KEY`](https://cloud.llamaindex.ai/project/6d759a43-6134-4e3e-844f-2f4a6cd400a6) to a `.env` file.
+2. **Start the server:**
    ```bash
    python Llamaparse-all/server.py
    ```
-4. **Test it!**
+3. **Test it!**
    - Send a request like:
      ```json
      {
@@ -76,6 +72,38 @@ flowchart TD
 
 ---
 
+## Errors We Faced (and Fixed)
+
+### 🔸 `ImportError` from `llama_cloud_services`
+
+* **Problem:** Trying to import `SourceText`, which isn’t part of the SDK anymore (we’re using v0.6.41).
+* **Fix:** Removed `SourceText` usage and simplified file input to use direct paths or base64 decoding.
+
+
+### 🔸 Agent creation failed silently
+
+* **Problem:** Sometimes agents weren’t getting created at all.
+* **Cause:** Invalid or malformed dynamic schema or missing error handling around `create_agent()`.
+* **Fix:** Added better exception handling and schema validation before calling the LlamaExtract SDK.
+
+
+### 🔸 MCP Timeout (`error -32001`)
+
+* **Problem:** The MCP server timed out waiting for LlamaExtract agent creation or extraction.
+* **Fixes:**
+  * Reduced unnecessary operations in the extract function
+  * Moved to use `pdf_path` (Claude can’t send base64 easily)
+  * Ensured we only create agents if they don’t already exist
+  * Avoided extra MCP tool functions that could slow things down
+
+
+### 🔸 Claude couldn’t send files
+
+* **Problem:** Claude doesn’t send PDFs as base64, but our first version only accepted `pdf_base64`.
+* **Fix:** Updated the server to accept both `pdf_path` and `pdf_base64` (with file existence check), so Claude works seamlessly.
+
+---
+
 ## 🛠️ What Tools Are Included?
 
 - **create_agent_and_extract**: Dynamically creates (or reuses) an agent and extracts the specified entities from a PDF (by file path or base64).
@@ -92,14 +120,31 @@ flowchart TD
 This module is the culmination of everything I learned—it's robust, flexible, and ready for real-world use. If you want to build your own document extraction service, start here!
 
 ---
+  
+## 🖼️ Visual Example:
 
-## 🙌 Ready to Learn or Contribute?
+Below are visual examples illustrating the main steps and processes in the dynamic PDF extraction workflow:
 
-If you’ve made it this far—thank you! I built this project to help others learn, experiment, and build real solutions. Whether you’re a total beginner or an experienced developer, your questions and contributions are always welcome.
+**1. Allowed Directories Listing**
 
-**Next Steps:**
-- Try running the server and see what you can build.
-- If you get stuck, open an issue or reach out—I'm happy to help!
-- Want to add a new feature or fix a bug? Fork the repo and send a pull request.
+![Image 1](../Images/image.png)
+ 
+ *This displays the allowed directories on the system, indicating where files can be accessed for extraction.*
 
-Let’s make document processing easier, together!  
+**2. PDF File Search**
+
+![Image 2](../Images/Screenshot%202025-07-09%20190336.png)
+ 
+ *This demonstrates searching for PDF files (such as test cases) within the allowed directories, a key step before extraction.*
+
+**3. Extraction Agent Creation and Entity Extraction**
+
+![Image 3](../Images/Screenshot%202025-07-09%20190355.png)
+ 
+ *This shows the process of creating an extraction agent and extracting specific entities from a selected PDF file.*
+
+**4. Extraction Agent Creation Output**
+
+![Image 4](../Images/Screenshot%202025-07-09%20190411.png)
+ 
+ *The output of the extraction agent and extracting specific entities from a selected PDF file.*  
