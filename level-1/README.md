@@ -74,15 +74,11 @@ async def hello(name: str) -> str:
 
 ## 🚀 How to Run This (Step-by-Step)
 
-1. **Install FastMCP:**
-   ```bash
-   pip install fastmcp
-   ```
-2. **Start the server:**
+1. **Start the server:**
    ```bash
    python server.py
    ```
-3. **Test it!**
+2. **Test it!**
    - Using MCP Inspector:
      - Run:
        ```bash
@@ -126,27 +122,19 @@ Getting this running gave me a solid foundation for everything that comes next. 
 ## 🖼️ Visual Example: Using the MCP Calculator Tool
 
 ![MCP Calculator Example](../Images/Screenshot%202025-07-09%20201953.png)
+
 *This shows the use of the MCP calculator tool to compute 3+4, including the request sent to the tool and the response received (3 + 4 = 7).* 
 
 #### Subtract Tool Example
 
 ![MCP Subtract Example](../Images/Screenshot%202025-07-09%20202324.png)
+
 *This shows the use of the MCP subtract tool to compute 10-7, including the request and the response (10 - 7 = 3).* 
 
 #### Hello Tool Example
 
 ![MCP Hello Example](../Images/Screenshot%202025-07-09%20202419.png)
+
 *This shows the use of the MCP hello tool, which returns a greeting message in response to the input.*
 
 ---
-
-## 🙌 Ready to Learn or Contribute?
-
-If you’ve made it this far—thank you! I built this project to help others learn, experiment, and build real solutions. Whether you’re a total beginner or an experienced developer, your questions and contributions are always welcome.
-
-**Next Steps:**
-- Try running the calculator and see what you can build.
-- If you get stuck, open an issue or reach out—I'm happy to help!
-- Want to add a new feature or fix a bug? Fork the repo and send a pull request.
-
-Let’s make document processing easier, together!
