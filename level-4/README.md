@@ -33,12 +33,6 @@ level-4/
 
 ---
 
-## 🔄 How It Works (Flowchart)
-
-(See the flowcharts below for a high-level and detailed process overview. These diagrams show how the server validates input, calls the LlamaParse API, and returns results or errors.)
-
----
-
 ## 🛠️ What Tool Is Included?
 
 ### `extract_entities`
