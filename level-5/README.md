@@ -2,7 +2,7 @@
 
 ## 🚀 Why I Built This
 
-After building the previous levels, I wanted a truly flexible, production-ready solution. Llamaparse-all is my answer: a dynamic PDF extraction server that lets you define what you want to extract at runtime. No more hardcoding schemas—just tell it what you need! If you want to build your own document extraction service, start here.
+After building the previous levels, I wanted a truly flexible, production-ready solution. LlamaIndex-all is my answer: a dynamic PDF extraction server that lets you define what you want to extract at runtime. No more hardcoding schemas—just tell it what you need! If you want to build your own document extraction service, start here.
 
 ---
 
@@ -23,7 +23,7 @@ Level-5/
    - Add your [`LLAMA_CLOUD_API_KEY`](https://cloud.llamaindex.ai/project/6d759a43-6134-4e3e-844f-2f4a6cd400a6) to a `.env` file.
 2. **Start the server:**
    ```bash
-   python Llamaparse-all/server.py
+   python LlamaIndex-all/server.py
    ```
 3. **Test it!**
    - Send a request like:
@@ -43,12 +43,12 @@ Level-5/
 
 ## 🔄 Main Extraction Workflow (Flowchart)
 
-Here's a visual overview of how the Llamaparse-all server processes a request, from user input to result:
+Here's a visual overview of how the LlamaIndex-all server processes a request, from user input to result:
 
 ```mermaid
 flowchart TD
     User["User sends extraction request (entities, PDF path/base64, agent name)"]
-    Server["Llamaparse-all Server receives request"]
+    Server["LlamaIndex-all Server receives request"]
     InputType{"Input Type?"}
     Path["Use file path directly"]
     Base64["Decode base64, save as temp PDF"]
