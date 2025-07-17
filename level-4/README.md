@@ -1,8 +1,8 @@
-# Level 4 - LlamaParse MCP Project
+# Level 4 - LlamaIndex MCP Project
 
 ## 🦙 Why I Built This
 
-After learning the basics of entity extraction, I wanted to make my tools smarter and more robust. This project is my step into using the LlamaParse API for PDF entity extraction, with a focus on encoding safety and real-world reliability. If you want to see how to connect your MCP server to a powerful parsing API, you’re in the right place!
+After learning the basics of entity extraction, I wanted to make my tools smarter and more robust. This project is my step into using the LlamaIndex API for PDF entity extraction, with a focus on encoding safety and real-world reliability. If you want to see how to connect your MCP server to a powerful parsing API, you’re in the right place!
 
 ---
 
@@ -10,7 +10,7 @@ After learning the basics of entity extraction, I wanted to make my tools smarte
 
 ```
 level-4/
-├── server-sdk.py       # MCP server using LlamaParse API
+├── server-sdk.py       # MCP server using LlamaIndex API
 ├── requirements.txt    # Python dependencies
 ├── README.md           # Documentation
 ```
@@ -35,14 +35,14 @@ level-4/
 
 ## 🔄 How It Works (Flowchart)
 
-(See the flowcharts below for a high-level and detailed process overview. These diagrams show how the server validates input, calls the LlamaParse API, and returns results or errors.)
+(See the flowcharts below for a high-level and detailed process overview. These diagrams show how the server validates input, calls the LlamaIndex API, and returns results or errors.)
 
 ---
 
 ## 🛠️ What Tool Is Included?
 
 ### `extract_entities`
-Extracts a list of specified entities from a PDF file or a base64 encoded PDF string using the LlamaParse API.
+Extracts a list of specified entities from a PDF file or a base64 encoded PDF string using the LlamaIndex API.
 
 - **Input:**
   - `pdf_path` (Optional[str]): The path to the PDF file.
