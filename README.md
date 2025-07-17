@@ -1,12 +1,12 @@
 # 📄 MCP Project: Multi-Level Document Processing System
 
-Welcome! I'm excited to share my journey building the **MCP (Model Context Protocol) Project**—a hands-on, multi-level exploration of document processing using FastMCP and **LlamaParse**. My goal with this project was to demystify intelligent document processing, break it down into approachable steps, and make it easy for anyone (including total beginners) to learn, experiment, and contribute.
+Welcome! I'm excited to share my journey building the **MCP (Model Context Protocol) Project**—a hands-on, multi-level exploration of document processing using FastMCP and **LlamaIndex**. My goal with this project was to demystify intelligent document processing, break it down into approachable steps, and make it easy for anyone (including total beginners) to learn, experiment, and contribute.
 
 ---
 
-## 🦙 What is LlamaParse?
+## 🦙 What is LlamaIndex
 
-**LlamaParse** is a powerful document parsing tool that extracts structured data and text from PDFs and other documents. It preserves formatting, supports multiple output types (like plain text and markdown), and is especially useful for building AI-powered document workflows. I chose LlamaParse for its reliability, flexibility, and ease of integration with Python projects.
+**LlamaIndex** is a powerful document parsing tool that extracts structured data and text from PDFs and other documents. It preserves formatting, supports multiple output types (like plain text and markdown), and is especially useful for building AI-powered document workflows. I chose LlamaParse for its reliability, flexibility, and ease of integration with Python projects.
 
 ---
 
@@ -177,11 +177,11 @@ flowchart TD
 
 ## 📘 Level 3: IDP Using Claude on Cursor
 
-### Why Use Claude, LlamaParse, and Cursor?
-At this point, I wanted to see how far I could push document understanding by combining my MCP server with powerful AI tools. **LlamaParse** is used here to extract the full text from PDFs, making it easy for Claude (via Cursor) to process and answer questions about your documents. LlamaParse ensures the text is clean and structured for downstream AI processing.
+### Why Use Claude, LlamaIndex, and Cursor?
+At this point, I wanted to see how far I could push document understanding by combining my MCP server with powerful AI tools. **LlamaIndex** is used here to extract the full text from PDFs, making it easy for Claude (via Cursor) to process and answer questions about your documents. LlamaParse ensures the text is clean and structured for downstream AI processing.
 
 ### What You'll Build
-A tool that returns the entire text of a PDF, making it easy for Claude (or any AI) to process and answer questions about your documents. **LlamaParse** is the backbone for parsing the PDF content.
+A tool that returns the entire text of a PDF, making it easy for Claude (or any AI) to process and answer questions about your documents. **LlamaIndex** is the backbone for parsing the PDF content.
 
 ### How to Run It (Step-by-Step)
 
@@ -224,15 +224,15 @@ async def get_full_text(pdf_path: str) -> str:
 - Claude could not read base64 data directly.
 
 **Solution:**  
-- Used LlamaParse to decode PDF and return plain text.
+- Used LlamaIndex to decode PDF and return plain text.
 
 ```python
-# Instead of passing base64, save PDF and pass file path to LlamaParse
+# Instead of passing base64, save PDF and pass file path to LlamaIndex
 ```
 
 **Learning:**  
 - Claude works best with full context.
-- Parsing text externally using LlamaParse SDK is more stable.
+- Parsing text externally using LlamaIndex SDK is more stable.
 
 #### 🗺️ Error Flowchart
 
@@ -249,11 +249,11 @@ flowchart TD
 
 ## 📘 Level 4: SDK-based Entity Extraction with Text Parsing
 
-### Why Entity Extraction with LlamaParse?
-After seeing the power of full-text extraction, I wanted to make my tools smarter—so I added entity extraction! This level is all about pulling out specific pieces of information (like invoice numbers or dates) from your documents. **LlamaParse** is used to convert PDFs to text, which is then processed to extract entities.
+### Why Entity Extraction with LlamaIndex?
+After seeing the power of full-text extraction, I wanted to make my tools smarter—so I added entity extraction! This level is all about pulling out specific pieces of information (like invoice numbers or dates) from your documents. **LlamaIndex** is used to convert PDFs to text, which is then processed to extract entities.
 
 ### What You'll Build
-A tool that takes a PDF and a list of entities you care about, and returns just those values. It's a great way to automate data entry or build document-driven workflows. **LlamaParse** handles the parsing step.
+A tool that takes a PDF and a list of entities you care about, and returns just those values. It's a great way to automate data entry or build document-driven workflows. **LlamaIndex** handles the parsing step.
 
 ### How to Run It (Step-by-Step)
 
@@ -337,10 +337,10 @@ flowchart TD
 ## 📦 Level-5: Dynamic PDF Extraction Server
 
 ### Why Level-5?
-After building the previous levels, I wanted a truly flexible, production-ready solution. LlamaParse-all is my answer: a dynamic PDF extraction server that lets you define what you want to extract at runtime. No more hardcoding schemas—just tell it what you need! **LlamaParse** is used for all document parsing and extraction, supporting both file path and base64 input.
+After building the previous levels, I wanted a truly flexible, production-ready solution. LlamaIndex-all is my answer: a dynamic PDF extraction server that lets you define what you want to extract at runtime. No more hardcoding schemas—just tell it what you need! **LlamaIndex** is used for all document parsing and extraction, supporting both file path and base64 input.
 
 ### What You'll Build
-A server that can extract any set of entities from any PDF, using either a file path or base64 input. It manages agents for you and handles all the tricky parts behind the scenes, with **LlamaParse** doing the heavy lifting for parsing and extraction.
+A server that can extract any set of entities from any PDF, using either a file path or base64 input. It manages agents for you and handles all the tricky parts behind the scenes, with **LlamaIndex** doing the heavy lifting for parsing and extraction.
 
 ### How to Run It (Step-by-Step)
 
@@ -383,7 +383,7 @@ This module is the culmination of everything I learned—it's robust, flexible, 
 ### 🚦 How It Works
 - Receives an extraction request with a list of entities, agent name, and PDF (as path or base64).
 - Dynamically builds a Pydantic schema for the requested entities.
-- Reuses or creates a LlamaParse agent for extraction.
+- Reuses or creates a LlamaIndex agent for extraction.
 - Returns extracted data in a structured format.
 
 ### 🚀 Example Usage
@@ -415,11 +415,11 @@ curl -X POST http://localhost:8000/tools/create_agent_and_extract \
 
 ## 📘 Second Method: Markdown Format + Robust Entity Extraction
 
-### Why Markdown, LlamaParse, and Streaming?
-After struggling with text parsing, I realized I needed a format that preserved the structure of my documents. **LlamaParse** turned out to be perfect—it keeps headings, bold text, and key-value pairs clear. Plus, switching to HTTP streaming made everything faster and more reliable.
+### Why Markdown, LlamaIndex, and Streaming?
+After struggling with text parsing, I realized I needed a format that preserved the structure of my documents. **LlamaIndex** turned out to be perfect—it keeps headings, bold text, and key-value pairs clear. Plus, switching to HTTP streaming made everything faster and more reliable.
 
 ### What You'll Build
-A tool that extracts entities from PDFs using markdown-formatted output from **LlamaParse**, so you get accurate, well-structured results every time.
+A tool that extracts entities from PDFs using markdown-formatted output from **LlamaIndex**, so you get accurate, well-structured results every time.
 
 ### How to Run It (Step-by-Step)
 
@@ -541,9 +541,10 @@ flowchart TD
 ## 📚 Resources
 
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)
+- [LlamaIndex](https://docs.cloud.llamaindex.ai/)
 
 ---
 
 ## 🔗 GitHub Repository
 
-[GitHub Repository](https://github.com/atharvabhakane)
+- [GitHub Repository](https://github.com/atharvabhakane)
