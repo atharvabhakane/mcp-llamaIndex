@@ -1,12 +1,12 @@
-# Second-method - MCP LlamaParse Server
+# Second-method - MCP LlamaIndex Server
 
 ## 🏆 Why I Built This
 
-After experimenting with text and basic entity extraction, I wanted a solution that was both robust and production-ready. Unlike Level 4, which had just one extraction tool, this method introduces multiple tools—`extract_entities_2`, `count_pages`, and `list_available_entities`—for more flexible and advanced document extraction workflows. This project is my deep dive into using the LlamaParse SDK for advanced PDF processing, with support for markdown output, streaming, and even Gemini-powered normalization. If you want to see how to build a real-world, high-performance document extraction server, this is it!
+After experimenting with text and basic entity extraction, I wanted a solution that was both robust and production-ready. Unlike Level 4, which had just one extraction tool, this method introduces multiple tools—`extract_entities_2`, `count_pages`, and `list_available_entities`—for more flexible and advanced document extraction workflows. This project is my deep dive into using the LlamaIndex SDK for advanced PDF processing, with support for markdown output, streaming, and even Gemini-powered normalization. If you want to see how to build a real-world, high-performance document extraction server, this is it!
 
 **How is this different from Level 4?**
 
-In Level 4, we had a single tool (`extract_entities`) for extracting entities from PDFs using LlamaParse. In this Second-method, we've expanded to a multi-tool approach, providing:
+In Level 4, we had a single tool (`extract_entities`) for extracting entities from PDFs using LlamaIndex. In this Second-method, we've expanded to a multi-tool approach, providing:
 - **extract_entities_2**: Extracts specified entities from a PDF (by file path or base64), with optional Gemini-powered markdown normalization.
 - **count_pages**: Returns the total number of pages in the PDF.
 - **list_available_entities**: Lists candidate entity names detected in the PDF.
@@ -19,7 +19,7 @@ This multi-tool setup allows for more advanced workflows, better resource manage
 
 ```
 second-method/
-├── server.py           # MCP server using LlamaParse SDK
+├── server.py           # MCP server using LlamaIndex SDK
 ├── requirements.txt    # Python dependencies
 ├── README.md           # Documentation
 ```
@@ -31,7 +31,7 @@ second-method/
 1. **Set up your API keys:**
    - Add your [`LLAMA_CLOUD_API_KEY`](https://cloud.llamaindex.ai/project/6d759a43-6134-4e3e-844f-2f4a6cd400a6) (and optionally Gemini API key) to a `.env` file:
      ```env
-     LLAMA_CLOUD_API_KEY=your_llamaparse_api_key_here
+     LLAMA_CLOUD_API_KEY=your_llamaIndex_api_key_here
      GEMINI_API_KEY=your_gemini_api_key_here  # Optional, for markdown normalization
      ```
 2. **Start the server:**
@@ -76,11 +76,11 @@ graph TD
     B --> C1{Tool: extract_entities_2};
     B --> C2{Tool: count_pages};
     B --> C3{Tool: list_available_entities};
-    C1 --> D1[Call LlamaParse SDK];
+    C1 --> D1[Call LlamaIndex SDK];
     C1 --> E1[Return Entities];
-    C2 --> D2[Call LlamaParse SDK];
+    C2 --> D2[Call LlamaIndex SDK];
     C2 --> E2[Return Page Count];
-    C3 --> D3[Call LlamaParse SDK];
+    C3 --> D3[Call LlamaIndex SDK];
     C3 --> E3[Return Detected Entities];
     D1 --> E1;
     D2 --> E2;
@@ -97,8 +97,8 @@ graph TD
 Here are a few real-world issues we hit (and how we solved them) while building the Level 5 Second-method server:
 
 🔴 **Claude Error:** ClaudeAiToolResultRequest.content.0.text.text: Input should be a valid string
-- **Cause:** Claude was getting an invalid or malformed input string from the LlamaParse output.
-- **Fix:** We added Gemini to the pipeline to normalize LlamaParse’s markdown output before sending it to Claude. This made the output much more consistent and Claude-friendly.
+- **Cause:** Claude was getting an invalid or malformed input string from the LlamaIndex output.
+- **Fix:** We added Gemini to the pipeline to normalize LlamaIndex’s markdown output before sending it to Claude. This made the output much more consistent and Claude-friendly.
 
 
 🔴 **Gemini SDK Error:** 404 models/gemini-pro not found
