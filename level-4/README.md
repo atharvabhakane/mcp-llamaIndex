@@ -65,37 +65,6 @@ This project taught me how to build more reliable, production-ready tools. I lea
 
 ---
 
-## 🚦 Usage Example
-
-Here’s how you might call the extraction tool from Python:
-
-```python
-import requests
-import json
-import base64
-
-SERVER_URL = "http://127.0.0.1:8000/tools/extract_entities"
-
-def extract_from_file(file_path, entities):
-    with open(file_path, "rb") as f:
-        pdf_data = f.read()
-        pdf_base64 = base64.b64encode(pdf_data).decode("utf-8")
-    headers = {"Content-Type": "application/json"}
-    payload = {
-        "pdf_base64": pdf_base64,
-        "entities": entities
-    }
-    response = requests.post(SERVER_URL, headers=headers, data=json.dumps(payload))
-    return response.json()
-
-# Example usage:
-# entities_to_extract = ["Name", "Address", "Invoice Number"]
-# result = extract_from_file("path/to/your/document.pdf", entities_to_extract)
-# print(json.dumps(result, indent=2))
-```
-
----
-
 ## System Architecture and Process Flow
 
 ### High-Level Flow
@@ -118,7 +87,7 @@ graph TD
 sequenceDiagram
     participant Client
     participant MCPServer as "MCP Server"
-    participant LlamaParseAPI as "LlamaParse API"
+    participant LlamaIndexAPI as "LlamaIndex API"
 
     Client->>MCPServer: Call extract_entities(pdf_path or pdf_base64, entities)
     activate MCPServer
@@ -126,9 +95,9 @@ sequenceDiagram
     alt Invalid Input or API Key Missing
         MCPServer-->>Client: Return Error
     else Inputs Valid & API Key Present
-        MCPServer->>LlamaParseAPI: Send PDF Data & Entities for Extraction
+        MCPServer->>LlamaIndexAPI: Send PDF Data & Entities for Extraction
         activate LlamaParseAPI
-        LlamaParseAPI-->>MCPServer: API Response (Success or Failure)
+        LlamaIndexAPI-->>MCPServer: API Response (Success or Failure)
         deactivate LlamaParseAPI
         alt Extraction Successful
             MCPServer-->>Client: Return Extraction Results
