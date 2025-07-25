@@ -81,32 +81,6 @@ graph TD
     E -- "No" --> G
     G --> H["Return Error: Extraction Failed"]
 ```
-
-### Detailed Process Flow (extract_entities tool)
-```mermaid
-sequenceDiagram
-    participant Client
-    participant MCPServer as "MCP Server"
-    participant LlamaIndexAPI as "LlamaIndex API"
-
-    Client->>MCPServer: Call extract_entities(pdf_path or pdf_base64, entities)
-    activate MCPServer
-    MCPServer->>MCPServer: Validate Inputs & Check API Key
-    alt Invalid Input or API Key Missing
-        MCPServer-->>Client: Return Error
-    else Inputs Valid & API Key Present
-        MCPServer->>LlamaIndexAPI: Send PDF Data & Entities for Extraction
-        activate LlamaParseAPI
-        LlamaIndexAPI-->>MCPServer: API Response (Success or Failure)
-        deactivate LlamaParseAPI
-        alt Extraction Successful
-            MCPServer-->>Client: Return Extraction Results
-        else Extraction Failed or Error
-            MCPServer-->>Client: Return Error: Extraction Failed
-        end
-    end
-    deactivate MCPServer
-```
 ---
 
 ## 🖼️ Visual Example: Using Base64 PDF Input
