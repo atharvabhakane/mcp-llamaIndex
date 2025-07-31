@@ -51,29 +51,14 @@ level-3/
 
 Here's a simple flow chart showing how the system works:
 
-```
-┌─────────────┐     ┌─────────────────┐
-│    You      │     │ simulated_idp.py│
-│  (User)     │     │  (Script)       │
-└──────┬──────┘     └──────┬──────────┘
-       │                   │
-       │ 1. Provide        │
-       │    Document &     │
-       │    Entities via   │
-       │    Standard Input │
-       │──────────────────>│
-       │                   │
-       │                   │ 2. Process
-       │                   │    Document
-       │                   │
-       │                   │ 3. Extract
-       │                   │    Information
-       │                   │
-       │ 4. See Results    │
-       │    on Standard    │
-       │    Output         │
-       │<──────────────────│
-       │                   │
+```mermaid
+flowchart TD
+    A[You User] --> B[Provide Document & Entities via Standard Input]
+    B --> C[simulated_idp.py Script]
+    C --> D[Process Document]
+    D --> E[Extract Information]
+    E --> F[See Results on Standard Output]
+    F --> G[User receives extracted data]
 ```
 
 ---
