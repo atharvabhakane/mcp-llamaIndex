@@ -23,27 +23,8 @@ This project is organized into **five progressive levels**. Each level introduce
 ### Why Start Here?
 I wanted to start with something super simple—a calculator! This level is all about getting comfortable with FastMCP, async Python, and the basics of exposing tools. If you're new to MCP or just want to see how the pieces fit together, this is the perfect place to begin.
 
-### 🧰 Tools Used
-- **FastMCP**: For building the MCP server and exposing tools.
-- **Python async**: For non-blocking tool execution.
-
 ### What You'll Build
 A tiny server that can add or subtract numbers (and greet you!). It's not fancy, but it's a great way to see how MCP tools work end-to-end.
-
-### How to Run It (Step-by-Step)
-
-1. **Start the server:**
-   ```bash
-   python level-1/server.py
-   ```
-2. **Test it!** You can use MCP Inspector, Cursor, or even send a JSON payload directly. For example:
-   ```json
-   { "tool": "add", "args": { "a": 5, "b": 3 } }
-   ```
-   You'll get back:
-   ```json
-   { "result": 8 }
-   ```
 
 ### What Happens Under the Hood?
 - The server listens for requests (like "add 5 and 3").
@@ -53,31 +34,7 @@ A tiny server that can add or subtract numbers (and greet you!). It's not fancy,
 ### Why This Matters
 This level gave me a solid foundation for everything that comes next. If you can get this running, you're ready for more advanced tools!
 
-### Key Tool Implementation
-
-```python
-@mcp.tool()
-async def add(numbers: list[float]) -> float:
-    """Add a list of numbers."""
-    return sum(numbers)
-
-@mcp.tool()
-async def subtract(numbers: list[float]) -> float:
-    """Subtract a list of numbers in order."""
-    result = numbers[0]
-    for n in numbers[1:]:
-        result -= n
-    return result
-```
-
-### 🧩 Error & Solution
-
-**Error:**  
-- None at this stage (basic functionality).
-
-**Learning:**  
-- How to define and expose tools using FastMCP.
-- Understanding FastMCP's request structure and event loop.
+📋 **Feedback & Learning Notes:** Check out [`level-1/FEEDBACK.md`](level-1/FEEDBACK.md) for detailed insights, challenges faced, and solutions discovered during development. For more learning on errors and troubleshooting, refer to the feedback files.
 
 ---
 
@@ -89,28 +46,6 @@ After getting the calculator working, I wanted to try something a bit more real-
 ### What You'll Build
 A tool that fetches the current weather for any city you ask for. It's a great way to learn about API integration and error handling.
 
-### How to Run It (Step-by-Step)
-
-1. **Get a WeatherAPI key:**
-   - Sign up at https://www.weatherapi.com/ and grab your free API key.
-2. **Set up your .env file:**
-   ```env
-   WEATHER_API_KEY=YOUR_API_KEY
-   ```
-3. **Start the server:**
-   ```bash
-   python level-2/weather_server.py
-   ```
-4. **Test it!**
-   Send a request like:
-   ```json
-   { "tool": "get_weather", "args": { "location": "London" } }
-   ```
-   You'll get back something like:
-   ```json
-   { "location": "London", "country": "UK", "temp_c": 18, "condition": "Partly cloudy" }
-   ```
-
 ### What You'll Learn
 - How to call external APIs from your MCP tool
 - How to handle timeouts, retries, and errors gracefully
@@ -118,21 +53,6 @@ A tool that fetches the current weather for any city you ask for. It's a great w
 
 ### Why This Matters
 This step taught me how to make my tools actually useful—by connecting them to real-world data. Plus, I learned a lot about handling things when they go wrong (see the error flowchart below!).
-
-### Key Tool Implementation
-
-```python
-import httpx
-
-@mcp.tool()
-async def get_weather(city_name: str) -> dict:
-    """Fetch current weather for a city."""
-    url = f"https://api.open-meteo.com/v1/forecast?city={city_name}&current_weather=true"
-    async with httpx.AsyncClient(timeout=5.0) as client:
-        response = await client.get(url)
-        response.raise_for_status()
-        return response.json()
-```
 
 ### 🧩 Error & Solution
 
@@ -162,66 +82,30 @@ async def fetch_with_retries(url, retries=3):
 - How to interact with external APIs.
 - Error handling with retries and fallback logic.
 
-#### 🗺️ Error Flowchart
-
-```mermaid
-flowchart TD
-    A[API Call] --> B{Timeout/Error?}
-    B -- Yes --> C[Retry]
-    C --> B
-    B -- No --> D[Return Weather Data]
-    C -- Max Retries --> E[Raise Exception]
-```
+📋 **Feedback & Learning Notes:** Check out [`level-2/FEEDBACK.md`](level-2/FEEDBACK.md) for detailed insights, challenges faced, and solutions discovered during development. For more learning on errors and troubleshooting, refer to the feedback files.
 
 ---
 
-## 📘 Level 3: IDP Using Claude on Cursor
+## 📘 Level 3: IDP Using Claude Desktop and AI Tools
 
-### Why Use Claude, LlamaIndex, and Cursor?
-At this point, I wanted to see how far I could push document understanding by combining my MCP server with powerful AI tools. **LlamaIndex** is used here to extract the full text from PDFs, making it easy for Claude (via Cursor) to process and answer questions about your documents. LlamaParse ensures the text is clean and structured for downstream AI processing.
+### Why Use Claude Desktop, LlamaIndex, and AI Tools?
+At this point, I wanted to see how far I could push document understanding by combining my MCP server with powerful AI tools. **LlamaIndex** is used here to extract the full text from PDFs, making it easy for Claude Desktop (or any AI assistant) to process and answer questions about your documents. LlamaParse ensures the text is clean and structured for downstream AI processing.
 
 ### What You'll Build
-A tool that returns the entire text of a PDF, making it easy for Claude (or any AI) to process and answer questions about your documents. **LlamaIndex** is the backbone for parsing the PDF content.
-
-### How to Run It (Step-by-Step)
-
-1. **Start the server:**
-   ```bash
-   python level-3/simulated_idp.py
-   ```
-2. **Test it!**
-   Send a request like:
-   ```json
-   { "tool": "get_full_text", "args": { "pdf_path": "path/to/your.pdf" } }
-   ```
-   You'll get back:
-   ```json
-   { "result": "Full text of your PDF here..." }
-   ```
+A tool that returns the entire text of a PDF, making it easy for Claude Desktop (or any AI) to process and answer questions about your documents. **LlamaIndex** is the backbone for parsing the PDF content.
 
 ### What You'll Learn
-- How to connect your MCP server to AI tools like Claude
+- How to connect your MCP server to AI tools like Claude Desktop
 - How to return large document content for downstream processing
 - How to handle file input and output in a robust way
 
 ### Why This Matters
 This level opened my eyes to how much more you can do when you combine MCP with AI. Suddenly, you can ask questions about your documents, extract insights, and automate all kinds of workflows.
 
-### Key Tool Implementation
-
-```python
-@mcp.tool()
-async def get_full_text(pdf_path: str) -> str:
-    """Return the full text of a PDF using LlamaParse."""
-    from llamaparse import LlamaParse
-    parser = LlamaParse()
-    return parser.parse(pdf_path)
-```
-
 ### 🧩 Error & Solution
 
 **Error:**  
-- Claude could not read base64 data directly.
+- Claude Desktop could not read base64 data directly.
 
 **Solution:**  
 - Used LlamaIndex to decode PDF and return plain text.
@@ -231,19 +115,10 @@ async def get_full_text(pdf_path: str) -> str:
 ```
 
 **Learning:**  
-- Claude works best with full context.
+- Claude Desktop works best with full context.
 - Parsing text externally using LlamaIndex SDK is more stable.
 
-#### 🗺️ Error Flowchart
-
-```mermaid
-flowchart TD
-    A[Receive base64 PDF] --> B{Claude can read base64?}
-    B -- No --> C[Convert to file path]
-    C --> D[Parse with LlamaParse]
-    D --> E[Return plain text]
-    B -- Yes --> F[Return to Claude]
-```
+📋 **Feedback & Learning Notes:** Check out [`level-3/FEEDBACK.md`](level-3/FEEDBACK.md) for detailed insights, challenges faced, and solutions discovered during development. For more learning on errors and troubleshooting, refer to the feedback files.
 
 ---
 
@@ -255,22 +130,6 @@ After seeing the power of full-text extraction, I wanted to make my tools smarte
 ### What You'll Build
 A tool that takes a PDF and a list of entities you care about, and returns just those values. It's a great way to automate data entry or build document-driven workflows. **LlamaIndex** handles the parsing step.
 
-### How to Run It (Step-by-Step)
-
-1. **Start the server:**
-   ```bash
-   python level-4/server-sdk.py
-   ```
-2. **Test it!**
-   Send a request like:
-   ```json
-   { "tool": "extract_entities", "args": { "pdf_path": "path/to/your.pdf", "entities": ["Invoice Number", "Date"] } }
-   ```
-   You'll get back:
-   ```json
-   { "Invoice Number": "INV-12345", "Date": "2024-06-01" }
-   ```
-
 ### What You'll Learn
 - How to parse documents as plain text
 - How to extract key-value pairs using string processing
@@ -278,21 +137,6 @@ A tool that takes a PDF and a list of entities you care about, and returns just 
 
 ### Why This Matters
 This level taught me that real-world documents are messy! I ran into spacing and alignment issues, which led me to look for better solutions in the next level.
-
-### Key Tool Implementation
-
-```python
-@mcp.tool()
-async def extract_entities(pdf_path: str, entities: list[str]) -> dict:
-    """Extract entities from parsed text."""
-    text = LlamaParse().parse(pdf_path, result_type="text")
-    result = {}
-    for entity in entities:
-        for line in text.splitlines():
-            if entity.lower() in line.lower():
-                result[entity] = line
-    return result
-```
 
 ### 🧩 Error & Solution
 
@@ -322,15 +166,7 @@ mcp.run(transport="http-streaming")
 **Learning:**  
 - Plain text parsing is unreliable for structured data.
 
-#### 🗺️ Error Flowchart
-
-```mermaid
-flowchart TD
-    A[Parse as text] --> B{Spacing issue?}
-    B -- Yes --> C[Misaligned key-value]
-    C --> D[Switch to markdown parsing]
-    B -- No --> E[Extract entities]
-```
+📋 **Feedback & Learning Notes:** Check out [`level-4/FEEDBACK.md`](level-4/FEEDBACK.md) for detailed insights, challenges faced, and solutions discovered during development. For more learning on errors and troubleshooting, refer to the feedback files.
 
 ---
 
@@ -342,29 +178,6 @@ After building the previous levels, I wanted a truly flexible, production-ready 
 ### What You'll Build
 A server that can extract any set of entities from any PDF, using either a file path or base64 input. It manages agents for you and handles all the tricky parts behind the scenes, with **LlamaIndex** doing the heavy lifting for parsing and extraction.
 
-### How to Run It (Step-by-Step)
-
-1. **Set your API key:**
-   - Add your [`LLAMA_CLOUD_API_KEY`](https://llamaindex.ai/) to a `.env` file.
-
-2. **Start the server:**
-   ```bash
-   python level-5/server.py
-   ```
-3. **Test it!**
-   Send a request like:
-   ```json
-   {
-     "entities": ["InvoiceNumber", "TotalAmount", "Date"],
-     "agent_name": "invoice_extractor",
-     "pdf_path": "/path/to/invoice.pdf"
-   }
-   ```
-   You'll get back:
-   ```json
-   { "agent": "invoice_extractor", "data": { "InvoiceNumber": "INV-12345", "TotalAmount": "$100.00", "Date": "2024-06-01" } }
-   ```
-
 ### What You'll Learn
 - How to build a dynamic, schema-free extraction server
 - How to handle both file path and base64 PDF input
@@ -372,13 +185,6 @@ A server that can extract any set of entities from any PDF, using either a file 
 
 ### Why This Matters
 This module is the culmination of everything I learned—it's robust, flexible, and ready for real-world use. If you want to build your own document extraction service, start here!
-
-### 🛠️ Requirements
-- llama-cloud-services
-- python-dotenv
-- fastapi
-- uvicorn
-- mcp
 
 ### 🚦 How It Works
 - Receives an extraction request with a list of entities, agent name, and PDF (as path or base64).
@@ -409,33 +215,17 @@ curl -X POST http://localhost:8000/tools/create_agent_and_extract \
     "pdf_path": "/path/to/file.pdf"
   }'
 ```
-
+📋 **Feedback & Learning Notes:** Check out [`level-5/FEEDBACK.md`](level-5/FEEDBACK.md) for detailed insights, challenges faced, and solutions discovered during development. For more learning on errors and troubleshooting, refer to the feedback files.
 
 ---
 
-## 📘 Second Method: Markdown Format + Robust Entity Extraction
+## 📘 LlamaParse: Markdown Format + Robust Entity Extraction
 
 ### Why Markdown, LlamaIndex, and Streaming?
 After struggling with text parsing, I realized I needed a format that preserved the structure of my documents. **LlamaIndex** turned out to be perfect—it keeps headings, bold text, and key-value pairs clear. Plus, switching to HTTP streaming made everything faster and more reliable.
 
 ### What You'll Build
 A tool that extracts entities from PDFs using markdown-formatted output from **LlamaIndex**, so you get accurate, well-structured results every time.
-
-### How to Run It (Step-by-Step)
-
-1. **Start the server:**
-   ```bash
-   python second-method/server.py
-   ```
-2. **Test it!**
-   Send a request like:
-   ```json
-   { "tool": "extract_entities_markdown", "args": { "pdf_path": "path/to/your.pdf", "entities": ["Invoice Number", "Total Amount"] } }
-   ```
-   You'll get back:
-   ```json
-   { "Invoice Number": "INV-12345", "Total Amount": "$100.00" }
-   ```
 
 ### What You'll Learn
 - How to use markdown to preserve document structure
@@ -444,22 +234,6 @@ A tool that extracts entities from PDFs using markdown-formatted output from **L
 
 ### Why This Matters
 This level finally solved the spacing and misalignment headaches I had before. Now, my entity extraction is accurate and fast, and the server is ready for real-world use!
-
-### Key Tool Implementation
-
-```python
-@mcp.tool()
-async def extract_entities_markdown(pdf_path: str, entities: list[str]) -> dict:
-    """Extract entities from markdown-formatted text."""
-    text = LlamaParse().parse(pdf_path, result_type="markdown")
-    result = {}
-    for line in text.splitlines():
-        clean_line = line.replace("**", "").strip()
-        for entity in entities:
-            if entity.lower() in clean_line.lower():
-                result[entity] = clean_line
-    return result
-```
 
 **Markdown Example:**
 ```
@@ -475,25 +249,7 @@ mcp.run(transport="streamable-http")
 - Markdown improved key-value accuracy and solved spacing issues.
 - HTTP streaming reduced response time and improved reliability.
 
-#### 🗺️ Error Flowchart
-
-```mermaid
-flowchart TD
-    A[Parse as markdown] --> B{Spacing issue?}
-    B -- No --> C[Accurate key-value extraction]
-    B -- Yes --> D[Improve markdown cleaning logic]
-```
-
----
-
-## 🧠 Summary Table: Errors and Fixes
-
-| Level | Error               | Fix                                        |
-| ----- | ------------------- | ------------------------------------------ |
-| 2     | API timeouts        | Added retries & set timeout using httpx    |
-| 3     | base64 not accepted | Converted PDF to path & returned full text |
-| 4     | Text spacing issues | Switched to markdown parsing               |
-| 5     | Tool latency        | Used `http-streaming` transport            |
+📋 **Feedback & Learning Notes:** Check out [`level-5/LlamaParse/FEEDBACK.md`](level-5/LlamaParse/FEEDBACK.md) for detailed insights, challenges faced, and solutions discovered during development. For more learning on errors and troubleshooting, refer to the feedback files.
 
 ---
 
@@ -502,9 +258,10 @@ flowchart TD
 ```mermaid
 flowchart LR
     A("Level 1: Tools only") --> B("Level 2: External API")
-    B --> C("Level 3: Claude + Text")
+    B --> C("Level 3: Claude Desktop + Text")
     C --> D("Level 4: SDK + Text Format")
-    D --> E("Level 5: Markdown + Streaming")
+    D --> E("Level 5: LlamaIndex Extraction Agent")
+    D --> F("LlamaParse: Markdown Format + Robust Entity Extraction")
 ```
 
 ---
@@ -543,8 +300,3 @@ flowchart TD
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)
 - [LlamaIndex](https://docs.cloud.llamaindex.ai/)
 
----
-
-## 🔗 GitHub Repository
-
-- [GitHub Repository](https://github.com/atharvabhakane)
