@@ -97,13 +97,3 @@ This project taught me that real-world documents are messy! I ran into spacing a
 
 *This shows the extracted output for the requested entities: invoice number, date, and status.*
 
----
-
-## ⚠️ Important Notes
-
-- Run the `simulated_idp.py` script directly.
-- The script interacts via standard input and standard output. The exact input format expected by FastMCP's stdio transport may require further investigation.
-- The system works best with well-formatted text documents.
-- Supported entities are determined by the logic within the `extract` function (currently includes basic patterns for entities followed by ':' or '-').
-
----
