@@ -1,0 +1,4 @@
+fastmcp
+llama-parse
+python-dotenv
+google-generativeai 
