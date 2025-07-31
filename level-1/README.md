@@ -19,23 +19,14 @@ level-1/
 
 ## 🔄 How It Works (Flowchart)
 
-```text
-+------------------+       +-------------------------+
-| User (in chat)   |  -->  | Claude/Cursor/Inspector |
-+------------------+       +-------------------------+
-                                   |
-                                   v
-                        +---------------------+
-                        | MCP Server (FastMCP)|
-                        | Tools: add, subtract|
-                        +---------------------+
-                                   |
-                                   v
-                         +--------------------+
-                         | Returns result JSON|
-                         +--------------------+
+```mermaid
+flowchart TD
+    A[User in chat] --> B[Claude Desktop/Cursor/Inspector]
+    B --> C[MCP Server FastMCP]
+    C --> D[Tools: add, subtract, hello]
+    D --> E[Returns result JSON]
+    E --> F[User receives result]
 ```
-
 ---
 
 ## 🛠️ What Tools Are Included?
