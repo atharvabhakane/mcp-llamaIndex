@@ -35,8 +35,19 @@ level-4/
 
 ## 🔄 How It Works (Flowchart)
 
-(See the flowcharts below for a high-level and detailed process overview. These diagrams show how the server validates input, calls the LlamaIndex API, and returns results or errors.)
-
+```mermaid
+graph TD
+    A["Start Entity Extraction"] --> B{"PDF Input (Path or Base64) and Entities Provided?"}
+    B -- "Yes" --> C{"LLAMA_API_KEY Configured?"}
+    B -- "No" --> Z["Return Error: Missing Input"]
+    C -- "Yes" --> D["Attempt API Extraction"]
+    C -- "No" --> X["Return Error: API Key Not Configured"]
+    D --> E{"API Call Successful?"}
+    D --> G["API Call Failed or Error"]
+    E -- "Yes" --> F["Return Extraction Results"]
+    E -- "No" --> G
+    G --> H["Return Error: Extraction Failed"]
+```
 ---
 
 ## 🛠️ What Tool Is Included?
@@ -63,24 +74,6 @@ Extracts a list of specified entities from a PDF file or a base64 encoded PDF st
 ## 🧑‍💻 Why This Matters
 This project taught me how to build more reliable, production-ready tools. I learned the importance of error handling, encoding safety, and clear API design.
 
----
-
-## System Architecture and Process Flow
-
-### High-Level Flow
-```mermaid
-graph TD
-    A["Start Entity Extraction"] --> B{"PDF Input (Path or Base64) and Entities Provided?"}
-    B -- "Yes" --> C{"LLAMA_API_KEY Configured?"}
-    B -- "No" --> Z["Return Error: Missing Input"]
-    C -- "Yes" --> D["Attempt API Extraction"]
-    C -- "No" --> X["Return Error: API Key Not Configured"]
-    D --> E{"API Call Successful?"}
-    D --> G["API Call Failed or Error"]
-    E -- "Yes" --> F["Return Extraction Results"]
-    E -- "No" --> G
-    G --> H["Return Error: Extraction Failed"]
-```
 ---
 
 ## 🖼️ Visual Example: Using Base64 PDF Input
